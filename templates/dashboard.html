@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+
+    <div class="page-hero">
+        <img src="{{ url_for('static', filename='url_dashboard.png') }}" alt="Dashboard Logo" width="100%" class="float-md-start mb-3">
+        <h1 class="mb-3">Dashboard</h1>
+
+        <form action="{{ url_for('shorten_url') }}" method="POST" class="mb-4">
+            <div class="mb-3">
+                <input type="url" name="url" id="url" class="form-control" placeholder="Paste URL Here..." required>
+            </div>
+            <button type="submit" class="btn btn-dark w-100">Shorten</button>
+        </form>
+        
+
+        <h3 class="mb-3">Your URLs</h3>
+        <ul class="list-group">
+            {% for url in urls %}
+            <li class="list-group-item d-flex justify-content-between align-items-center bg-dark text-white">
+                <div>
+                    <a href="{{ url_for('redirect_to_url', shortened=url.shortened_url) }}" target="_blank" class="text-white">short.euanliv.click/{{ url.shortened_url }}</a> 
+                    <span class="text-white">- {{ url.original_url }}</span>
+                    <span class="badge bg-white text-dark ms-2">Clicks: {{ url.clicks }}</span>
+                </div>
+                <form action="{{ url_for('delete_url', url_id=url.id) }}" method="POST" class="d-inline">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+{% endblock %}

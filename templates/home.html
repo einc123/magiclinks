@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row mb-4">
+    <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="d-flex justify-content-center align-items-center w-100">
+            <img src="{{ url_for('static', filename='url_home1.png') }}" alt="Url Shortner Icon" width="70%">
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="d-flex justify-content-center align-items-center w-100 h-100">
+            <div>
+                <h1>Effortlessly Shorten Long Links.</h1>
+                <p>Say goodbye to lengthy links. With my easy to use URL shortening tool you can transform any long URL into a short shareable link within seconds. Whether it's for social media, emails or even presentations, my solution makes sharing easier and more professional!</p>
+                {% if 'user' in session %}
+                    <a class="btn btn-light btn-block" href="{{ url_for('dashboard') }}">Visit your dashboard</a>
+                {% else %}
+                    <a class="btn btn-light btn-block" href="{{ url_for('login') }}">Start shortening URL's today</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="d-flex justify-content-center align-items-center w-100 h-100">
+            <div>
+                <h1>Made at Napier.</h1>
+                <p>This project is designed for the Advanced Web Technologies class project at Edinburgh Napier University. Aimed at demonstrating python flask.</p>
+                {% if 'user' in session %}
+                    <a class="btn btn-light btn-block" href="{{ url_for('dashboard') }}">Visit your dashboard</a>
+                {% else %}
+                    <a class="btn btn-light btn-block" href="{{ url_for('login') }}">Start shortening URL's today</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="d-flex justify-content-center align-items-center w-100">
+            <img src="{{ url_for('static', filename='url_home2.png') }}" alt="Napier Icon" width="50%">
+        </div>
+    </div>
+</div>
+{% endblock %}

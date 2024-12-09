@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-hero">
+    <img src="{{ url_for('static', filename='url_emailsent.png') }}" alt="Email Sent Icon" width="100%" class="float-md-start mb-3">
+    <h1>Check your email</h1>
+    <p class="mb-0">An email with a button to login has been sent to you! Click it to continue.</p>
+</div>
+{% endblock %}
